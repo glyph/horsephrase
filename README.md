@@ -1,4 +1,4 @@
-horsephrase
+Horsephrase
 ===========
 
 Secure Password Generator
