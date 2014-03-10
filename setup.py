@@ -2,7 +2,7 @@
 from setuptools import setup
 
 setup(
-    name="Horsephrase",
+    name="horsephrase",
     version="0.1",
     description="Secure password generator.",
     long_description=(
