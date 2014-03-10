@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="horsephrase",
-    version="0.1",
+    version="0.1.1",
     description="Secure password generator.",
     long_description=(
         "Like http://correcthorsebatterystaple.net/ except it's not a web page"
@@ -15,6 +15,9 @@ setup(
     maintainer_email="glyph@twistedmatrix.com",
     url="https://github.com/glyph/Horsephrase/",
     packages=["horsephrase"],
+    package_data=dict(
+        horsephrase=["*.txt"],
+    ),
     license="MIT",
     classifiers=[
         "Programming Language :: Python :: 2.7",
