@@ -16,5 +16,5 @@ def generate(number=4, choice=SystemRandom().choice):
 
 
 def output():
-    print(generate)
+    print(generate())
     return 0
