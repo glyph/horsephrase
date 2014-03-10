@@ -24,7 +24,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "horsephrase = horsephrase:generate",
+            "horsephrase = horsephrase:output",
         ],
     },
 )
