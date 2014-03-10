@@ -13,7 +13,7 @@ setup(
     author_email="glyph@twistedmatrix.com",
     maintainer="Glyph",
     maintainer_email="glyph@twistedmatrix.com",
-    url="https://github.com/glyph/Horsephrase/",
+    url="https://github.com/glyph/horsephrase/",
     packages=["horsephrase"],
     package_data=dict(
         horsephrase=["*.txt"],
