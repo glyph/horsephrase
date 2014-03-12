@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="horsephrase",
-    version="0.1.2",
+    version="0.2.0",
     description="Secure password generator.",
     long_description=(
         "Like http://correcthorsebatterystaple.net/ except it's not a web page"
