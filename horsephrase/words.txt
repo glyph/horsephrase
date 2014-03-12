@@ -651,8 +651,6 @@ attributings
 audience
 audiences
 aunt
-aunt
-aunts
 aunts
 author
 authored
@@ -838,7 +836,6 @@ behaviour
 behaviours
 behind
 bein
-being
 being
 beings
 belief
@@ -2246,8 +2243,6 @@ courting
 courtings
 courts
 cousin
-cousin
-cousins
 cousins
 cover
 coverage
@@ -2411,12 +2406,8 @@ cycling
 cyclings
 d
 dad
-dad
-daddies
 daddies
 daddy
-daddy
-dads
 dads
 daies
 dailies
@@ -2902,10 +2893,8 @@ divorcing
 divorcings
 do
 doctor
-doctor
 doctored
 doctoring
-doctors
 doctors
 document
 documented
@@ -2954,7 +2943,6 @@ downings
 downs
 dozen
 dozens
-dr
 dr
 draft
 drafted
@@ -4013,7 +4001,6 @@ forwarding
 forwards
 fought
 found
-found
 foundation
 foundations
 founded
@@ -4324,8 +4311,6 @@ grand
 grander
 grandest
 grandmother
-grandmother
-grandmothers
 grandmothers
 grant
 granted
@@ -4769,7 +4754,6 @@ husbands
 hut
 hypotheses
 hypothesis
-i
 i
 ice
 iced
@@ -5751,9 +5735,7 @@ mapping
 mappings
 maps
 march
-march
 marched
-marches
 marches
 marching
 marchings
@@ -6011,15 +5993,11 @@ modifyings
 module
 modules
 mom
-mom
 moment
 momentary
 moments
 mommies
-mommies
 mommy
-mommy
-moms
 moms
 money
 moneys
@@ -6054,7 +6032,6 @@ mortgaging
 mortgagings
 most
 mostly
-mother
 mother
 mothered
 motherhood
@@ -7252,14 +7229,11 @@ production
 productions
 products
 prof
-prof
 profession
 professional
 professionals
 professions
 professor
-professor
-professors
 professors
 profile
 profiled
@@ -8214,7 +8188,6 @@ saved
 saves
 saving
 savings
-saw
 saw
 say
 sayed
@@ -10079,11 +10052,9 @@ unables
 uncertainties
 uncertainty
 uncle
-uncle
 unclear
 uncleared
 unclears
-uncles
 uncles
 under
 undergo
@@ -10461,7 +10432,6 @@ wetter
 wettest
 wetting
 what
-what
 whatever
 whatevers
 wheat
@@ -10503,7 +10473,6 @@ whole
 wholes
 whom
 whose
-why
 why
 wicked
 wide
@@ -10633,7 +10602,6 @@ worries
 worry
 worrying
 worryings
-worse
 worse
 worship
 worst
