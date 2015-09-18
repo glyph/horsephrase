@@ -8,7 +8,7 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser(description="Generate secure passwords.")
-parser.add_argument("--count", type=int, default=4)
+parser.add_argument("--count", type=int, default=5)
 parser.add_argument("--words", type=argparse.FileType("rb"),
                     default=resource_filename("horsephrase", "words.txt"))
 
