@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 from ._implementation import words
 
-def how_long(length=4, choices=len(words), speed=1000 * 1000 * 1000,
+def how_long(length=4, choices=len(words), speed=1000 * 1000 * 1000 * 1000,
              optimism=2):
     """
     How long might it take to guess a password?
