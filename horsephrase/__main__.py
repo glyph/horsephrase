@@ -24,7 +24,7 @@ parser_generate.set_defaults(do_verb=do_generate)
 
 parser_estimate = subparsers.add_parser("estimate")
 parser_estimate.add_argument("--guesses-per-second",
-                             default=1000 * 1000 * 1000,
+                             default=1000 * 1000 * 1000 * 1000,
                              type=int)
 parser_estimate.add_argument("--numeric")
 def do_estimate(namespace):
