@@ -48,10 +48,13 @@ def redivmod(initial_value, factors):
             # depluralize
             label = label[:-1]
         addition = unicode(remainder) + ' ' + unicode(label)
-        if not result:
-            addition = 'and ' + addition
         result.insert(0, addition)
-    return ', '.join(result)
+    if len(result) > 1:
+        result[-1] = "and " + result[-1]
+    if result:
+        return ', '.join(result)
+    else:
+        return "instantly"
 
 
 
