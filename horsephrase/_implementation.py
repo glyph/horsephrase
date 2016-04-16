@@ -8,11 +8,11 @@ words = resource_string(__name__, "words.txt").decode("utf-8").split()
 
 from random import SystemRandom
 
-def generate(number=4, choice=SystemRandom().choice):
+def generate(number=4, choice=SystemRandom().choice, words=words, joiner=" "):
     """
     Generate a random passphrase from the GSL.
     """
-    return " ".join(choice(words) for each in range(number))
+    return joiner.join(choice(words) for each in range(number))
 
 
 def output():
