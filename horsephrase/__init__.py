@@ -1,7 +1,8 @@
 
-from ._implementation import generate, output
+from ._implementation import output
+from .__main__ import main
 
 __all__ = [
-    'generate',
     'output',
+    'main'
 ]
