@@ -2,6 +2,8 @@
 
 from __future__ import unicode_literals
 
+import six
+
 from ._implementation import words
 
 def how_long(length=4, choices=len(words), speed=1000 * 1000 * 1000 * 1000,
@@ -47,7 +49,10 @@ def redivmod(initial_value, factors):
         if remainder == 1:
             # depluralize
             label = label[:-1]
-        addition = unicode(remainder) + ' ' + unicode(label)
+        if six.PY2:
+            addition = unicode(remainder) + ' ' + unicode(label)
+        else:
+            addition = str(remainder) + ' ' + str(label)
         result.insert(0, addition)
     if len(result) > 1:
         result[-1] = "and " + result[-1]

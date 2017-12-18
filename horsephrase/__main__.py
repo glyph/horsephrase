@@ -1,13 +1,14 @@
 
 from __future__ import absolute_import, print_function, unicode_literals
-from ._implementation import generate
+from ._implementation import generate, words
 from ._guess_guess import humantime, how_long
 from pkg_resources import resource_filename
 
+import six
 import sys
 import argparse
 import string
-from io import BytesIO
+from io import BytesIO, StringIO
 
 def do_generate(namespace):
     print(generate(number=namespace.count,
@@ -48,9 +49,9 @@ def make_parser():
 without_subparsers = make_parser()
 parser = make_parser()
 subparsers = parser.add_subparsers()
+subparsers.required = True
 
 parser_generate = subparsers.add_parser("generate")
-
 parser_generate.set_defaults(do_verb=do_generate)
 
 parser_estimate = subparsers.add_parser("estimate")
@@ -64,10 +65,10 @@ import contextlib
 
 @contextlib.contextmanager
 def captured_output():
-    buffer = BytesIO()
+    buffer = BytesIO() if six.PY2 else StringIO()
     class LenientIO(object):
         def write(self, data):
-            if isinstance(data, bytes):
+            if six.PY3 or isinstance(data, bytes):
                 buffer.write(data)
             else:
                 buffer.write(data.encode("utf-8"))
@@ -109,7 +110,7 @@ def main():
             namespace.count = 5
         namespace.joiner = " "
         with namespace.words as wordfile:
-            namespace.wordlist = wordfile.read().split()
+            namespace.wordlist = wordfile.read().decode("utf-8").split()
     namespace.do_verb(namespace)
 
 if __name__ == '__main__':

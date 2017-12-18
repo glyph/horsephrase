@@ -18,13 +18,21 @@ setup(
     package_data=dict(
         horsephrase=["*.txt"],
     ),
+    install_requires=['six==1.11.0'],
     license="MIT",
     classifiers=[
         "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6"
     ],
     entry_points={
         "console_scripts": [
             "horsephrase = horsephrase.__main__:main",
         ],
     },
+    extras_require={
+        ':python_version == "2.7"': ['mock']
+    }
 )
