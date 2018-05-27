@@ -33,6 +33,7 @@ setup(
         ],
     },
     extras_require={
-        ':python_version == "2.7"': ['mock']
+        ':python_version == "2.7"': ['mock'],
+        'dev': ['requests'],
     }
 )
