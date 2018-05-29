@@ -5,7 +5,7 @@ Run with 'python -m horsephrase._regen_words > horsephrase/words.txt'
   of words that short, it's trivially possible to attack the password as
   letters rather than as selections from this list.
 
-- Add words (both sourced from http://norvig.com/ngrams/) from a list of
+- Add words (both sourced from https://norvig.com/ngrams/) from a list of
   correctly-spelled words (the YAWL) in the order of word
   frequency (count_1w.txt) until we reach a desirable count
 
@@ -41,9 +41,9 @@ _removed_words = set([
 ])
 
 def get_words(session):
-    yawl = session.get("http://norvig.com/ngrams/word.list")
+    yawl = session.get("https://norvig.com/ngrams/word.list")
     correct = set(yawl.text.split())
-    counts = session.get("http://norvig.com/ngrams/count_1w.txt")
+    counts = session.get("https://norvig.com/ngrams/count_1w.txt")
     for line in counts.text.splitlines():
         word, count = line.split()
         if word not in correct:
