@@ -10179,6 +10179,7 @@ horoscopes
 horrible
 horribly
 horrific
+horrified
 horror
 horrors
 hors
@@ -12465,7 +12466,6 @@ lymphatic
 lymphocyte
 lymphocytes
 lymphoma
-lynch
 lynx
 lyric
 lyrical

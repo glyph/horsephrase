@@ -38,6 +38,7 @@ NUM_WORDS = 23600
 # as we do not want to offend people who read the source.
 _removed_words = set([
    '31506a8448a761a448a08aa69d9116ea8a6cb1c6b3f4244b3043051f69c9cc3c',
+    'e9b6438440bf1991a49cfc2032b47e4bde26b7d7a6bf7594ec6f308ca1f5797c',
 ])
 
 def get_words(session):
