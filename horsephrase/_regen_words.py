@@ -18,7 +18,9 @@ Run with 'python -m horsephrase._regen_words > horsephrase/words.txt'
 - Remove words that are offensive, triggering or otherwise in poor taste.
   Horsephrases should be communicable to people over phone lines without
   being embarassing, offensive or unprofessional.
-  If generating a horsephrase generates something offensive,
+  If generating a horsephrase generates something offensive, add the sha256 of
+  the offending word to _removed_words, run the command at the start of this
+  module, and open a PR with both changes.
 """
 if __name__ != "__main__":
     raise ImportError("module is not importable")
