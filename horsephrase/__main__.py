@@ -41,7 +41,10 @@ def make_parser():
     )
     sourcegroup.add_argument(
         "--hex", action="store_true",
-        help=""
+        help="generate a hexidecimal key"
+    )
+    sourcegroup.add_argument(
+        "--letters", action="store_true", help="generate a short combination of letters for easier typing, i.e. access points"
     )
     return parser
 
@@ -105,6 +108,11 @@ def main():
         namespace.joiner = ""
         if namespace.count is None:
             namespace.count = 20
+    elif namespace.letters:
+        namespace.wordlist = string.ascii_letters
+        namespace.joiner = ""
+        if namespace.count is None:
+            namespace.count = 13
     else:
         if namespace.count is None:
             namespace.count = 5
