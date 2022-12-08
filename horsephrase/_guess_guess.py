@@ -6,7 +6,7 @@ from typing import Iterable
 from ._implementation import words
 
 def how_long(length: int=4, choices: int=len(words), speed: int=1000 * 1000 * 1000 * 1000,
-             optimism: int=2) -> float:
+             optimism: int=2) -> int:
     """
     How long might it take to guess a password?
 
@@ -26,7 +26,7 @@ def how_long(length: int=4, choices: int=len(words), speed: int=1000 * 1000 * 10
     assert choices > 0
     assert length > 0
     count: int = (choices ** length)
-    return (count / (speed * optimism))
+    return int(count / (speed * optimism))
 
 
 
