@@ -22,6 +22,9 @@ Run with 'python -m horsephrase._regen_words > horsephrase/words.txt'
   the offending word to _removed_words, run the command at the start of this
   module, and open a PR with both changes.
 """
+from typing import Iterator, Iterable
+
+
 if __name__ != "__main__":
     raise ImportError("module is not importable")
 
@@ -41,7 +44,7 @@ _removed_words = set([
     'e9b6438440bf1991a49cfc2032b47e4bde26b7d7a6bf7594ec6f308ca1f5797c',
 ])
 
-def get_words(session):
+def get_words(session: requests.Session) -> Iterator[str]:
     yawl = session.get("https://norvig.com/ngrams/word.list")
     correct = set(yawl.text.split())
     counts = session.get("https://norvig.com/ngrams/count_1w.txt")
@@ -51,7 +54,7 @@ def get_words(session):
             continue
         yield word
 
-def valid_words(words):
+def valid_words(words: Iterable[str]) -> Iterator[str]:
     for word in words:
         if len(word) <= 3:
             continue

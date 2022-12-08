@@ -35,8 +35,8 @@ def make_parser() -> argparse.ArgumentParser:
 
     sourcegroup = parser.add_mutually_exclusive_group()
     sourcegroup.add_argument(
-        "--words", type=argparse.FileType("rb"),
-        default=normpath(pathjoin(__file__, "..", "horsephrase", "words.txt")),
+        "--words", type=argparse.FileType("r"),
+        default=normpath(pathjoin(__file__, "..", "words.txt")),
         help="the filename of a words file to use"
     )
     sourcegroup.add_argument(

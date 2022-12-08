@@ -1,10 +1,10 @@
 from importlib.resources import files
 
 # See http://jbauman.com/aboutgsl.html
-with (files(__name__) / "words.txt").open() as _:
+parent_module = ".".join(__name__.split(".")[:-1])
+with (files(parent_module) / "words.txt").open() as _:
     words = _.read().strip().split("\n")
 del _
-
 
 from random import SystemRandom
 from typing import TypeVar, Callable, Sequence
