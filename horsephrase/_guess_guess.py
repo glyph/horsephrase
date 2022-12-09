@@ -1,6 +1,6 @@
 # Guess how many guesses it will take to guess a password.
 
-from __future__ import unicode_literals
+from __future__ import annotations
 from typing import Iterable
 
 from ._implementation import words

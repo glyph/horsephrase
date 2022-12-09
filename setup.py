@@ -31,6 +31,7 @@ setup(
         ],
     },
     extras_require={
+        ':python_version < "3.8"': ['typing_extensions'],
         'dev': ['requests'],
     }
 )

@@ -3,8 +3,15 @@ from __future__ import annotations
 from ._implementation import generate, words
 from ._guess_guess import humantime, how_long
 
-from typing import Iterator, Protocol, ContextManager
+from typing import Iterator, ContextManager
+
 import sys
+
+if sys.version_info < (3,8):
+    from typing_extensions import Protocol
+else:
+    from typing import Protocol
+
 from os.path import join as pathjoin, normpath
 import argparse
 import string
