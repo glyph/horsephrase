@@ -19,6 +19,7 @@ setup(
         horsephrase=["*.txt"],
     ),
     license="MIT",
+    python_requires='>=3',
     classifiers=[
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
