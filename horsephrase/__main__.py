@@ -1,21 +1,21 @@
 
-from __future__ import absolute_import, print_function, unicode_literals
+from __future__ import annotations
 from ._implementation import generate, words
 from ._guess_guess import humantime, how_long
-from pkg_resources import resource_filename
 
-import six
+from typing import Iterator, Protocol, ContextManager
 import sys
+from os.path import join as pathjoin, normpath
 import argparse
 import string
-from io import BytesIO, StringIO
+from io import BytesIO, StringIO, TextIOWrapper
 
-def do_generate(namespace):
+def do_generate(namespace: NameSpace) -> None:
     print(generate(number=namespace.count,
                    words=namespace.wordlist,
                    joiner=namespace.joiner))
 
-def do_estimate(namespace):
+def do_estimate(namespace: NameSpace) -> None:
     seconds = how_long(length=namespace.count,
                        choices=len(namespace.wordlist),
                        speed=namespace.guesses_per_second)
@@ -26,7 +26,7 @@ def do_estimate(namespace):
     print(result)
 
 
-def make_parser():
+def make_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Generate secure passwords.")
     parser.add_argument(
         "--count", type=int, default=None,
@@ -35,8 +35,8 @@ def make_parser():
 
     sourcegroup = parser.add_mutually_exclusive_group()
     sourcegroup.add_argument(
-        "--words", type=argparse.FileType("rb"),
-        default=resource_filename("horsephrase", "words.txt"),
+        "--words", type=argparse.FileType("r"),
+        default=normpath(pathjoin(__file__, "..", "words.txt")),
         help="the filename of a words file to use"
     )
     sourcegroup.add_argument(
@@ -67,25 +67,32 @@ parser_estimate.set_defaults(do_verb=do_estimate)
 import contextlib
 
 @contextlib.contextmanager
-def captured_output():
-    buffer = BytesIO() if six.PY2 else StringIO()
-    class LenientIO(object):
-        def write(self, data):
-            if six.PY3 or isinstance(data, bytes):
-                buffer.write(data)
-            else:
-                buffer.write(data.encode("utf-8"))
+def captured_output() -> Iterator[StringIO]:
+    buffer = StringIO()
     out = sys.stdout
     err = sys.stderr
-    sys.stdout = LenientIO()
-    sys.stderr = LenientIO()
+    sys.stdout = buffer
+    sys.stderr = buffer
     try:
         yield buffer
     finally:
         sys.stdout = out
         sys.stderr = err
 
-def parse_command_line(argv):
+class NameSpace(Protocol):
+    wordlist: list[str]
+    count: int
+    joiner: str
+    guesses_per_second: int
+    numeric: bool
+    hex: bool
+    letters: bool
+    words: ContextManager[TextIOWrapper]
+
+    def do_verb(self, namespace: NameSpace) -> None:
+        pass
+
+def parse_command_line(argv: list[str]) -> NameSpace:
     try:
         with captured_output() as captured:
             return parser.parse_args(argv)
@@ -101,7 +108,7 @@ def parse_command_line(argv):
         return parser.parse_args(argv + ["generate"])
 
 
-def main():
+def main() -> None:
     namespace = parse_command_line(sys.argv[1:])
     if namespace.hex:
         namespace.wordlist = list(sorted(set(string.hexdigits.lower())))
@@ -109,7 +116,7 @@ def main():
         if namespace.count is None:
             namespace.count = 20
     elif namespace.letters:
-        namespace.wordlist = string.ascii_letters
+        namespace.wordlist = list(string.ascii_letters)
         namespace.joiner = ""
         if namespace.count is None:
             namespace.count = 13
@@ -118,7 +125,7 @@ def main():
             namespace.count = 5
         namespace.joiner = " "
         with namespace.words as wordfile:
-            namespace.wordlist = wordfile.read().decode("utf-8").split()
+            namespace.wordlist = wordfile.read().split()
     namespace.do_verb(namespace)
 
 if __name__ == '__main__':

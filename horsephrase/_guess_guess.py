@@ -1,41 +1,41 @@
 # Guess how many guesses it will take to guess a password.
 
 from __future__ import unicode_literals
-
-import six
+from typing import Iterable
 
 from ._implementation import words
 
-def how_long(length=4, choices=len(words), speed=1000 * 1000 * 1000 * 1000,
-             optimism=2):
+def how_long(length: int=4, choices: int=len(words), speed: int=1000 * 1000 * 1000 * 1000,
+             optimism: int=2) -> int:
     """
     How long might it take to guess a password?
 
     @param length: the number of words that we're going to choose.
-    @type length: L{int}
 
     @param choice: the number of words we might choose between.
-    @type choice: L{int}
 
     @param speed: the speed of our hypothetical password guesser, in guesses
         per second.
-    @type speed: L{int}
 
     @param optimism: When we start guessing all the options, we probably won't
         have to guess I{all} of them to get a hit.  This assumes that the
         guesser will have to guess only C{1/optimism} of the total number of
         possible options before it finds a hit.
     """
-    return ((choices ** length) / (speed * optimism))
+    # https://github.com/python/mypy/issues/7765
+    assert choices > 0
+    assert length > 0
+    count: int = (choices ** length)
+    return int(count / (speed * optimism))
 
 
 
-def redivmod(initial_value, factors):
+def redivmod(initial_value: float, factors: Iterable[tuple[int,str]]) -> str:
     """
     Chop up C{initial_value} according to the list of C{factors} and return a
     formatted string.
     """
-    result = []
+    result: list[str] = []
     value = initial_value
     for divisor, label in factors:
         if not divisor:
@@ -49,10 +49,7 @@ def redivmod(initial_value, factors):
         if remainder == 1:
             # depluralize
             label = label[:-1]
-        if six.PY2:
-            addition = unicode(remainder) + ' ' + unicode(label)
-        else:
-            addition = str(remainder) + ' ' + str(label)
+        addition = str(remainder) + ' ' + str(label)
         result.insert(0, addition)
     if len(result) > 1:
         result[-1] = "and " + result[-1]
@@ -63,15 +60,13 @@ def redivmod(initial_value, factors):
 
 
 
-def humantime(seconds):
+def humantime(seconds: float) -> str:
     """
     A human-readable interpretation of a time interval.
 
     @param seconds: A number of seconds.
-    @type seconds: The type of seconds.
 
     @return: A string describing the time interval.
-    @rtype: L{unicode}
     """
     return redivmod(seconds, [(60, "seconds"),
                               (60, "minutes"),
