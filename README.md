@@ -67,3 +67,7 @@ $ horsephrase estimate
 Just so you know, `horsephrase` uses Python's `SystemRandom` API, which pulls
 entropy from `/dev/urandom`, which is
 [the correct way to do it](http://sockpuppet.org/blog/2014/02/25/safely-generate-random-numbers/).
+
+## AI Policy
+
+Horsephrase follows the [Twisted AI Policy](https://docs.twisted.org/en/latest/development/ai-policy.html). This means this project does not allow the inclusion of the outputs of generative AI tools.
